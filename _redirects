@@ -1,0 +1,36 @@
+---
+layout: null
+---
+{% capture _redirects %}
+
+{% assign urls_sorted = site.pages | map: "url" | sort %}
+{% assign urls_filtered = "" | split: "," | pop %}
+
+{% for url in urls_sorted %}
+  {% assign first_twelve_chars = url | slice: 0, 12 %}
+  {% if first_twelve_chars == "/content/en/" %}
+    {% assign url_stripped = url | replace: "/content/en/", "/" %}
+    {% assign urls_filtered = urls_filtered | push: url_stripped %}
+  {% endif %}
+{% endfor %}
+
+{% assign redirects = "" | split: "," | pop %}
+
+{% for url in urls_filtered %}
+  {% for language in site.data.languages %}
+    {% if language.enabled %}
+      {% for accept_language in language.accept_languages %}
+
+        {% capture redirect %}{{url}}  /{{language.tag}}{{url}}  200  Language={{accept_language}}{% endcapture %}
+        {% assign redirects = redirects | push: redirect %}
+
+      {% endfor %}
+    {% endif %}
+  {% endfor %}
+{% endfor %}
+
+{% capture newline %}
+{% endcapture %}
+
+{% endcapture %}
+{{redirects | join: newline}}

@@ -1,0 +1,8 @@
+title: netlify-redirects
+description: ""
+baseurl: ""
+url: ""
+markdown: kramdown
+permalink: pretty
+include:
+  - "_redirects"

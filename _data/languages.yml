@@ -1,0 +1,8 @@
+- name: "English"
+  tag: "en"
+  enabled: Yes
+  accept_languages: ["en", "en-us", "en-au", "en-nz", "en-za", "en-bz", "en-tt"]
+- name: "Español"
+  tag: "es-ES"
+  enabled: Yes
+  accept_languages: ["es", "es-mx", "es-gt", "es-cr", "es-pa", "es-do", "es-ve", "es-co", "es-pe", "es-ar", "es-ec", "es-cl", "es-uy", "es-py", "es-bo", "es-sv", "es-hn", "es-ni", "es-pr"]
